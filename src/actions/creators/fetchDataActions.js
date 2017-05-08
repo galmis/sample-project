@@ -1,13 +1,11 @@
 // @flow
 
-'use strict';
-
 import {
   FETCH_DATA,
   FETCH_DATA_SUCCESS,
   FETCH_DATA_ERROR
 } from '../../constants/ACTION_TYPE';
-import type { Action, Person } from '../../types';
+import type { Action } from '../../types';
 
 function fetchData(url: string): Action {
   return {

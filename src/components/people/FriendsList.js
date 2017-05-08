@@ -1,8 +1,7 @@
 // @flow
 
 import React from 'react';
-import { PageHeader, Grid, Row, Col } from 'react-bootstrap';
-import PropTypes from 'prop-types';
+import { Grid, Row, Col } from 'react-bootstrap';
 
 import type { Friend } from '../../types';
 import FriendItem from './FriendItem';

@@ -1,6 +1,7 @@
 // @flow
 
-import React, { Component } from 'react';
+// react must be in scope to use jsx
+import React from 'react';
 
 import PeopleContainer from '../people/PeopleContainer';
 

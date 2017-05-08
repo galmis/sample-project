@@ -1,8 +1,7 @@
 // @flow
 
 import React from 'react';
-import { PageHeader, Media, Image, Glyphicon, Grid } from 'react-bootstrap';
-import PropTypes from 'prop-types';
+import { Media, Image, Glyphicon, Grid } from 'react-bootstrap';
 
 const FriendsItem = (props: Object) => {
   debugger;

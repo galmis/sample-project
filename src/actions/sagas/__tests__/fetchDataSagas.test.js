@@ -7,6 +7,7 @@ import {
 import { fetchData } from '../fetchDataSagas';
 import type { Action } from '../../../types';
 import { fetch } from '../../../services/fetchApi';
+import { getNormalizedData } from '../../../services/normalize';
 import { put, call } from 'redux-saga/effects';
 
 describe('fetchDataSagas tests', () => {
@@ -22,12 +23,13 @@ describe('fetchDataSagas tests', () => {
     const gen = fetchData(action);
 
     expect(gen.next().value).toEqual(call(fetch, url));
-
     const data = 'some data';
-    expect(gen.next(data).value).toEqual(put({
+    const normalizedData = 'some normalized data';
+    expect(gen.next(data).value).toEqual(call(getNormalizedData, data));
+    expect(gen.next(normalizedData).value).toEqual(put({
       type: FETCH_DATA_SUCCESS,
       payload: {
-        data
+        normalizedData
       }
     }));
     expect(gen.next().done).toEqual(true);

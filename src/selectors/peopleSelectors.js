@@ -43,6 +43,7 @@ function getPerson(state: Object, id: string): Person {
   if (person) {
     return person;
   }
+  // no person found yet?
   // return default
   return {
     id,

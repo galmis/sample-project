@@ -1,6 +1,10 @@
 // @flow
 
-import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
+import {
+  createStore,
+  applyMiddleware,
+  combineReducers
+} from 'redux';
 import { browserHistory } from 'react-router';
 import {
   syncHistoryWithStore,
@@ -8,14 +12,25 @@ import {
   routerMiddleware
 } from 'react-router-redux';
 import createSagaMiddleware from 'redux-saga';
-import { persistStore, autoRehydrate } from 'redux-persist'
+import { persistStore } from 'redux-persist';
 
 import reducers from '../reducers';
 import rootSaga from '../actions/sagas';
 import { fetchData } from '../actions/creators/fetchDataActions';
 import { getIsDataCached } from '../selectors/peopleSelectors';
 
-export default function configureStore(onConfigured: (store: Object, syncedHistory: Object) => void) {
+const persistConfig = {
+  // NOTE: storage engine can be set here, it defaults to
+  // localStorage. Even though localForage is a recommended
+  // storage engine for web,
+  // localStorage is good enough for this task
+  whitelist: [
+    // persisted reducers
+    reducers.peopleReducer.name
+  ]
+};
+
+export default function configureStore(onStoreLoaded: (store: Object, syncedHistory: Object) => void) {
   const rootReducer = combineReducers({
     ...reducers,
     routing: routerReducer
@@ -29,21 +44,14 @@ export default function configureStore(onConfigured: (store: Object, syncedHisto
   sagaMiddleware.run(rootSaga);
   const syncedHistory = syncHistoryWithStore(browserHistory, store);
 
-  onConfigured(store, syncedHistory);
-  _persistStore(store);
-}
-
-function _persistStore(store: Object) {
-  const persistConfig = {
-    whitelist: [
-      // persisted reducers
-      reducers.peopleReducer.name
-    ]
-  };
-
+  // ... start persisting the store ...
+  // NOTE: the app fetches data only the first time, when it's
+  // loaded. While this is ok for this small task, this would
+  // not be ok for an app in production, so a cache expiration
+  // mechanism would need to be implemented
   persistStore(store, persistConfig, () => {
-    debugger;
     // the callback is called when store finishes rehydrating
+    onStoreLoaded(store, syncedHistory);
     if (!getIsDataCached(store.getState())) {
       store.dispatch(fetchData('/data'));
     }

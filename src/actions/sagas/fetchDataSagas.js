@@ -13,15 +13,11 @@ function* fetchData(action: Action): Generator<*, *, *> {
     const data = yield call(fetch, action.payload.url);
     if (data) {
       const normalizedData = yield call(getNormalizedData, data);
-      if (normalizedData) {
-        yield put(fetchDataSuccess(normalizedData));
-      }
+      yield put(fetchDataSuccess(normalizedData));
     } else {
-      console.log('no data received');
       yield put(fetchDataError('No data received'));
     }
   } catch(error) {
-    console.log('error thrown');
     yield put(fetchDataError(error.message));
   }
 }

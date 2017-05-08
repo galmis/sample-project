@@ -14,7 +14,7 @@ describe('common tests for every reducer', () => {
       foo: 'foo'
     };
     deepFreeze(state);
-    const action = { type: 'non existing type' };
+    const action = { type: 'non existing type', payload: {} };
     deepFreeze(action);
 
     for (let key of Object.keys(reducers)) {
@@ -24,7 +24,7 @@ describe('common tests for every reducer', () => {
   });
 
   it('returns initial state', () => {
-    const action = { type: 'non existing type' };
+    const action = { type: 'non existing type', payload: {} };
     deepFreeze(action);
 
     for (let key of Object.keys(reducers)) {

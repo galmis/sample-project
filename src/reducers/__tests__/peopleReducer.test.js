@@ -24,6 +24,7 @@ describe('peopleReducer specific tests', () => {
 
     const newState = {
       data: newData,
+      isDataCached: true
     }
 
     expect(peopleReducer(oldState, action)).toEqual(newState);

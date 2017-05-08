@@ -6,7 +6,7 @@ import { FETCH_DATA_SUCCESS } from '../constants/ACTION_TYPE';
 import type { Action, NormalizedData } from '../types';
 import { getIsDataCached, getNormalizedData } from '../selectors/peopleSelectors';
 
-const initialNormalizedData = {
+const initialNormalizedData: NormalizedData = {
   result: [],
   entities: {
     dataById: {  }
@@ -47,7 +47,8 @@ export default function peopleReducer(state: Object = initialState, action: Acti
         isDataCached: true
       }
     }
-  }
 
-  return state;
+    default:
+      return state;
+  }
 }
