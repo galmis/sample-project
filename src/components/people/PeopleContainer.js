@@ -14,7 +14,10 @@ function mapStateToProps(state: Object) {
   }
 }
 
-// Pass the props to People 'dumb' component.
+// Pass the props to PeopleView 'dumb' component. Normally, I would also pass bound
+// action creators using bindActionCreators helper function, but none of my components
+// really need to dispatch any actions...
+
 // React and redux wouldn't know about each other...
 // So I'm using this connect function, which is like a bridge between
 // react and redux.

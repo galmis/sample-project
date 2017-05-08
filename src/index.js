@@ -14,7 +14,6 @@ import 'react-bootstrap-table/dist/react-bootstrap-table.min.css';
 import './styles/index.css';
 
 configureStore( (store: Object, syncedHistory: Object) => {
-  debugger;
   // render react app when store is configured
   ReactDOM.render(
     <Provider store={store}>

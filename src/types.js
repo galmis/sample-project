@@ -1,21 +1,5 @@
 // @flow
 
-'use strict';
-
-import {
-  FETCH_DATA,
-  FETCH_DATA_SUCCESS,
-  FETCH_DATA_ERROR
-} from './constants/ACTION_TYPE';
-
-// NOTE: doesn't work - review!
-//
-// export type Action =
-//     { type: FETCH_DATA }
-//   | { type: FETCH_DATA_SUCCESS }
-//   | { type: FETCH_DATA_ERROR }
-//   ;
-
 export type Action = { type: string, payload: Object };
 
 export type Friend = {
