@@ -10,7 +10,6 @@ import {
 
 function mapStateToProps(state: Object, routerProps: Object) {
   const id = routerProps.params.id;
-  debugger;
   return {
     person: getPerson(state, id)
   }

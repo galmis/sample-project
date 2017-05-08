@@ -7,7 +7,6 @@ import type { Friend } from '../../types';
 import FriendItem from './FriendItem';
 
 const FriendsList = (props: Object) => {
-  debugger;
 
   const _renderFriendItem = (friend: Friend, index: number) => {
     return (
@@ -20,7 +19,6 @@ const FriendsList = (props: Object) => {
   const _renderFriends = (friends: Array<Friend>) => {
     const friendsToRender = [];
     const len = friends.length;
-    debugger;
 
     for (let i = 0; i < len; i++) {
       friendsToRender.push(_renderFriendItem(friends[i], i));

@@ -21,18 +21,20 @@
     "reselect": "^3.0.0"
   },
   "devDependencies": {
+    "concurrently": "^3.4.0",
     "deep-freeze": "0.0.1",
     "flow-bin": "^0.45.0",
     "nodemon": "^1.11.0",
     "react-scripts": "0.9.5"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "client": "react-scripts start",
+    "server": "nodemon server",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "flow": "flow",
-    "serve": "nodemon server"
+    "flow": "flow"
   },
   "proxy": "http://localhost:3001"
 }

@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import FriendsList from './FriendsList';
 
 const PersonView = (props: Object) => {
-  debugger;
   const { first_name, last_name, gender, email, friends } = props.person;
   const name = `${first_name} ${last_name}`;
 
