@@ -38,7 +38,6 @@ function getPeopleById(state: Object): Object {
 }
 
 function getPerson(state: Object, id: string): Person {
-  debugger;
   const person = getPeopleById(state)[id];
   if (person) {
     return person;

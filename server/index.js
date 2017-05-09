@@ -10,7 +10,6 @@ const data = require('./data');
 
 console.log('server code is running...');
 
-// NOTE: won't work with just __dirname...
 app.use(express.static(__dirname));
 
 app.get('/data', (req, res) => {
@@ -20,7 +19,7 @@ app.get('/data', (req, res) => {
 
 app.get('*', (req, res) => {
   console.log('app.get');
-  res.sendFile(path.resolve(__dirname, 'index.html'));
+  res.sendFile(path.resolve(`${__dirname}/../public/`, 'index.html'));
 });
 
 app.listen(port);

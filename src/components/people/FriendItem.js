@@ -4,7 +4,7 @@ import React from 'react';
 import { Media, Image, Glyphicon, Grid } from 'react-bootstrap';
 
 const FriendsItem = (props: Object) => {
-  debugger;
+  
   const { first_name, last_name, email, picture } = props.friend;
   const name = `${first_name} ${last_name}`;
 
